@@ -1,44 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SalesLoft People Dashboard
 
-## Available Scripts
+This app will use the SL API to display a list of people. The goal is to always have a finished product ready to be improved upon with new features.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+Run:
+yarn install
+yarn start
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Make sure you have Ruby on Rails, run rake db:migrate
 
-### `npm test`
+## Built With
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* [HTML](https://www.w3.org/html/) - The markup language used
+* [CSS](https://www.w3.org/Style/CSS/learning.en.html) -  The style sheet language used
+* [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - The programming language used
+* [Create React App](https://github.com/facebook/create-react-app) - This project was bootstrapped with
 
-### `npm run build`
+## Responsibilities
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Rodolfo - Front-end
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Versioning
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We use [GitHub](http://github.com/) for versioning. For the versions available, see the [tags on this repository](https://github.com/rsaez/project/tags).
 
-### `npm run eject`
+## Authors
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* **Rodolfo Saez** - *Front* - [Rodolfo Saez](https://github.com/rsaez)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Acknowledgments
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Hat tip to Nora Ignatius
+* George P Burdell
