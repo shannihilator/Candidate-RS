@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+const API_URL = process.env.REACT_APP_API_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
+const CORS_PROXY_URL = process.env.REACT_APP_CORS_PROXY_URL;
+const SL_HEADER = {
+    headers: {
+        authorization: API_KEY,
+    },
+};
+const req = new Request(CORS_PROXY_URL + API_URL, SL_HEADER);
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        Hello World
       </div>
     );
   }
