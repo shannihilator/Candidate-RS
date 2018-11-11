@@ -11,6 +11,20 @@ const SL_HEADER = {
 const req = new Request(CORS_PROXY_URL + API_URL, SL_HEADER);
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        items:[],
+        isLoaded: false,
+      }
+  }
+
+  componentDidMount() {
+
+  }
+
+
   render() {
     return (
       <div className="App">
