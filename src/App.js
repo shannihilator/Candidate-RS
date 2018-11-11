@@ -22,6 +22,17 @@ class App extends Component {
 
   componentDidMount() {
 
+    fetch(req)
+      .then((res) => res.json())
+      .then(json => {
+          console.log("respond: ", json);
+          this.setState({
+              isLoaded: true,
+              items: json,
+          })
+      })
+      .catch(err => console.log(err));
+
   }
 
 
