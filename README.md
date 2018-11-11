@@ -8,10 +8,6 @@ Run:
 yarn install
 yarn start
 
-### Prerequisites
-
-Make sure you have Ruby on Rails, run rake db:migrate
-
 ## Built With
 
 * [HTML](https://www.w3.org/html/) - The markup language used
