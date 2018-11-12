@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Person from "./components/person";
+import Char from "./components/char";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -16,6 +17,7 @@ class App extends Component {
     super(props);
     this.state = {
       people: [],
+      level2: [],
       isLoaded: false
     };
   }
@@ -38,27 +40,87 @@ class App extends Component {
     // console.log("buttonPressed", this.state.people);
     let emailAddressArray = [];
 
+    // puts all of the email addresses into one array
     this.state.people.map(email_address =>
       emailAddressArray.push(email_address.email_address)
     );
 
-    console.log("emailArray ", emailAddressArray);
+    // console.log("emailAddressArray ", emailAddressArray);
 
+    // charArray will consist of all the characters in an email
     let charArray = [];
-    let charArray2 = [];
+    // charList will list all unique characters and their frequency
     let charList = [];
+
+    // First we parse through every email in our email array
     for (let i = 0; i < emailAddressArray.length; i++) {
-      charArray.push(emailAddressArray[i].split(""));
+      charArray = emailAddressArray[i].split("");
+      // Second we parse through every character in each email
       for (let j = 0; j < charArray.length; j++) {
+        let isPresent = false;
+        //Third we parse our charList to either add a new character or count an existing character
         for (let k = 0; k < charList.length; k++) {
-          if (charArray[j] != charList[k]) {
+          if (charArray[j] === charList[k][0]) {
+            isPresent = true;
+            charList[k][1]++;
+            // console.log("true");
           }
+        }
+        if (!isPresent) {
+          charList.push([charArray[j], 1]);
         }
       }
     }
-    console.log("char Length: ", charArray.length);
-    console.log("charArray: ", charArray);
+    // console.log("char Length: ", charArray.length);
+    // console.log("charArray: ", charArray);
+    // console.log("charList: ", charList);
+
+    // double checks total number of characters should be 542
+    // let total = 0;
+    // for (let i = 0; i < charList.length; i++) {
+    //   total += charList[i][1];
+    // }
+    // console.log("total: ", total);
+
+    // update charList to state
+    this.setState({
+      level2: charList
+    });
   };
+
+  //This function renders the level 2 table
+  renderTable() {
+    if (this.state.level2.length !== 0) {
+      return (
+        <div>
+          <table
+            style={{ width: 200 }}
+            className="table table-sm text-light bg-primary mx-auto"
+          >
+            <thead>
+              <tr>
+                <th style={{ width: 100 }} scope="col">
+                  Character
+                </th>
+                <th style={{ width: 100 }} scope="col">
+                  Frequency
+                </th>
+              </tr>
+            </thead>
+
+            <tbody
+              style={{ width: 200 }}
+              className="mx-auto bg-primary text-center"
+            >
+              {this.state.level2.map(char => (
+                <Char key={char[0]} char={char[0]} count={char[1]} />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
+  }
 
   // need conditional render options
   render() {
@@ -72,7 +134,7 @@ class App extends Component {
           >
             Level 2: email character count
           </button>
-          <span className={this.getBadgeClasses()}>00</span>
+          {this.renderTable()}
         </div>
         {this.state.people.map(person => (
           <Person
@@ -85,11 +147,6 @@ class App extends Component {
       </div>
     );
   } //end of render
-
-  getBadgeClasses() {
-    let classes = "badge m-2 badge-primary";
-    return classes;
-  } //end of getBadgeClasses
 } // end of App class
 
 export default App;
