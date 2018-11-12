@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Person from "./components/person";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -33,20 +34,17 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  // need conditional render options
   render() {
     return (
       <div className="container pt-4">
         {this.state.people.map(person => (
-          <div style={{ width: 400 }} className="card mx-auto m-4 bg-success">
-            <div className="h5 card-tile bg-success text-light px-2 pt-2">
-              {person.display_name}
-            </div>
-            <p className="card-text bg-success text-light m-1 px-2 pb-2">
-              Title: {person.title}
-              <br />
-              Email: {person.email_address}
-            </p>
-          </div>
+          <Person
+            value={person.id}
+            display_name={person.display_name}
+            title={person.title}
+            email_address={person.email_address}
+          />
         ))}
       </div>
     );
