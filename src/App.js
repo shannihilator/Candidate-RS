@@ -15,9 +15,6 @@ class App extends Component {
     super(props);
     this.state = {
       people: [],
-      displayName: [],
-      emailAddress: [],
-      title: [],
       isLoaded: false
     };
   }
@@ -26,41 +23,11 @@ class App extends Component {
     fetch(req)
       .then(res => res.json())
       .then(json => {
-        console.log("json ", json);
-
-        let peopleArray = [];
-        let displayNameArray = [];
-        let emailAddressArray = [];
-        let titleArray = [];
-
-        for (let i in json.data) {
-          peopleArray.push([
-            json.data[i].display_name,
-            json.data[i].email_address,
-            json.data[i].title
-          ]);
-        }
-
-        for (let i in json.data) {
-          displayNameArray.push(json.data[i].display_name);
-        }
-
-        for (let i in json.data) {
-          emailAddressArray.push(json.data[i].email_address);
-        }
-
-        for (let i in json.data) {
-          titleArray.push(json.data[i].title);
-        }
-
-        console.log("resArray: ", peopleArray);
+        console.log("json ", json.data);
 
         this.setState({
           isLoaded: true,
-          people: peopleArray,
-          displayName: displayNameArray,
-          emailAddress: emailAddressArray,
-          title: titleArray
+          people: json.data
         });
       })
       .catch(err => console.log(err));
@@ -72,12 +39,12 @@ class App extends Component {
         {this.state.people.map(person => (
           <div style={{ width: 400 }} className="card mx-auto m-4 bg-success">
             <div className="h5 card-tile bg-success text-light px-2 pt-2">
-              {person[0]}
+              {person.display_name}
             </div>
             <p className="card-text bg-success text-light m-1 px-2 pb-2">
-              Title: {person[2]}
+              Title: {person.title}
               <br />
-              Email: {person[1]}
+              Email: {person.email_address}
             </p>
           </div>
         ))}
