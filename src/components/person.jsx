@@ -13,7 +13,7 @@ class Person extends Component {
   };
 
   render() {
-    console.log("props: ", this.props);
+    // console.log("props: ", this.props);
     return (
       <div style={{ width: 400 }} className="card mx-auto m-4 bg-success">
         <Name

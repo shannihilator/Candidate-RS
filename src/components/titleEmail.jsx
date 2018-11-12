@@ -11,7 +11,7 @@ class Name extends Component {
   };
 
   render() {
-    console.log("props: ", this.props);
+    // console.log("props: ", this.props);
     return (
       <div>
         <p className="card-text bg-success text-light m-1 px-2 pb-2">
