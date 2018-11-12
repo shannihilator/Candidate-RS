@@ -68,14 +68,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        {this.state.people.map(display_name => (
-          <div style={{ width: 400 }} className="card m-5">
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">{display_name[0]}</li>
-              <li className="list-group-item">{display_name[1]}</li>
-              <li className="list-group-item">{display_name[2]}</li>
-            </ul>
+      <div className="container pt-4">
+        {this.state.people.map(person => (
+          <div style={{ width: 400 }} className="card mx-auto m-4 bg-success">
+            <div className="h5 card-tile bg-success text-light px-2 pt-2">
+              {person[0]}
+            </div>
+            <p className="card-text bg-success text-light m-1 px-2 pb-2">
+              Title: {person[2]}
+              <br />
+              Email: {person[1]}
+            </p>
           </div>
         ))}
       </div>
