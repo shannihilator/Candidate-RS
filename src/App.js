@@ -68,7 +68,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         {this.state.people.map(display_name => (
           <div style={{ width: 400 }} className="card m-5">
             <ul className="list-group list-group-flush">
