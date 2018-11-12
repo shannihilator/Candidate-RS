@@ -14,7 +14,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      people: [],
+      displayName: [],
+      emailAddress: [],
+      title: [],
       isLoaded: false
     };
   }
@@ -23,11 +26,41 @@ class App extends Component {
     fetch(req)
       .then(res => res.json())
       .then(json => {
-        console.log("respond: ", json);
+        console.log("json ", json);
+
+        let peopleArray = [];
+        let displayNameArray = [];
+        let emailAddressArray = [];
+        let titleArray = [];
+
+        for (let i in json.data) {
+          peopleArray.push([
+            json.data[i].display_name,
+            json.data[i].email_address,
+            json.data[i].title
+          ]);
+        }
+
+        for (let i in json.data) {
+          displayNameArray.push(json.data[i].display_name);
+        }
+
+        for (let i in json.data) {
+          emailAddressArray.push(json.data[i].email_address);
+        }
+
+        for (let i in json.data) {
+          titleArray.push(json.data[i].title);
+        }
+
+        console.log("resArray: ", peopleArray);
 
         this.setState({
           isLoaded: true,
-          items: JSON.stringify(json.data)
+          people: peopleArray,
+          displayName: displayNameArray,
+          emailAddress: emailAddressArray,
+          title: titleArray
         });
       })
       .catch(err => console.log(err));
@@ -36,17 +69,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        <span style={{ fontSize: 30 }} className={this.getBadgeClasses()}>
-          {this.state.items}
-        </span>
+        {this.state.people.map(display_name => (
+          <div style={{ width: 400 }} className="card m-5">
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">{display_name[0]}</li>
+              <li className="list-group-item">{display_name[1]}</li>
+              <li className="list-group-item">{display_name[2]}</li>
+            </ul>
+          </div>
+        ))}
       </div>
     );
   } //end of render
-
-  getBadgeClasses() {
-    let classes = "badge m-2 badge-primary";
-    return classes;
-  }
 } // end of App class
 
 export default App;
