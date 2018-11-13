@@ -17,7 +17,7 @@ yarn start
 
 ## Responsibilities
 
-Rodolfo - Front-end
+RS - Front-end
 
 ## Versioning
 
@@ -25,7 +25,7 @@ We use [GitHub](http://github.com/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Rodolfo Saez** - *Front* - [Rodolfo Saez](https://github.com/rsaez)
+RS
 
 ## License
 
